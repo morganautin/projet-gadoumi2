@@ -38,7 +38,7 @@ from drf_spectacular.utils import extend_schema, OpenApiExample, OpenApiParamete
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by("-created_at")
     serializer_class = ProductSerializer
-    permission_classes = [permissions.AllowAny]  # à durcir plus tard
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ["created_at", "price", "name"]
     ordering = ["-created_at"]
