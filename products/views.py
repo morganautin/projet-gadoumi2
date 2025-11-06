@@ -15,16 +15,27 @@ from rest_framework_xml.renderers import XMLRenderer
         "Lister, créer, consulter, modifier et supprimer des produits.\n"
         "Supporte pagination (?page=) et tri (?ordering=price, -created_at, name)."
     ),
+    request={
+        "application/json": ProductSerializer,
+        "application/xml": ProductSerializer,
+    },
+    responses={
+        "application/json": ProductSerializer,
+        "application/xml": ProductSerializer,
+    },
     examples=[
         OpenApiExample(
             "Exemple de création",
             value={"name": "Pencil", "price": "1.99"},
             request_only=True,
+            media_type="application/json",
+
         ),
         OpenApiExample(
             "Exemple de réponse",
             value={"id": 1, "name": "Pencil", "price": "1.99", "created_at": "2025-01-01T12:00:00Z"},
             response_only=True,
+            media_type="application/json",
         ),
     ],
     parameters=[
