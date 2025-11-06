@@ -2,7 +2,7 @@
 PY ?= python
 MANAGE := $(PY) manage.py
 
-.PHONY: run migrate makemigrations superuser
+.PHONY: rPHONY: run migrate makemigrations superuser schema-json schema-yaml
 
 run:
 > $(MANAGE) runserver
@@ -17,7 +17,7 @@ superuser:
 > $(MANAGE) createsuperuser
 
 schema-json:
-> $(MANAGE) spectacular --file schema.json
+> $(MANAGE) spectacular --file schema.json --format json
 
 schema-yaml:
 > $(MANAGE) spectacular --file schema.yaml --format yaml
